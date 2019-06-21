@@ -1,9 +1,6 @@
 import React from 'react';
 import './App.css';
-
-const Intro = (props) => ( <p>
-  Functional TV list here.
-</p>);
+import Intro from './components/Intro/index';
 
 function App() {
   return (
@@ -18,7 +15,7 @@ function App() {
           T.V. Series
         </a>
       </header>
-      <Intro/>
+      <Intro message= "Here are all your favorite T.V. series:"/>
     </div>
   );
 }
