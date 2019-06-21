@@ -1,17 +1,18 @@
-import React from 'react';
-import './App.css';
+import React, { Component } from 'react';
 import Intro from '../Intro';
+import './App.css';
+import 'whatwg-fetch';
 
-class App extends React.Component{
+class App extends Component{
   state = {
     series: []
   }
   componentDidMount() {
-    const series = ['The Gary Owen show', "Game of thrones"];
-    setTimeout(()=> {
-     this.setState({series});
-    }, 2000);
+    fetch('http://api.tvmaze.com/search/shows?q=vikings')
+     .then(response => response.json())
+     .then(json => this.setState({ series: json}))
   }
+
   render() {
     return (
     <div className="App">
