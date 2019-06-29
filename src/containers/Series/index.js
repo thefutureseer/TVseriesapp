@@ -9,17 +9,21 @@ class Series extends Component {
     seriesName:'',
     isFetching: false
   }
+
   onSeriesInputChange = e => {
     this.setState({ seriesName: e.target.value, isFetching: true});
+
     fetch(`http://api.tvmaze.com/search/shows?q=${e.target.value}`)
-     .then(response => response.json())
-     .then(json => this.setState({ series: json}))
-  }
-  componentDidMount() {
-    fetch('http://api.tvmaze.com/search/shows?q=Gary-Owen')
      .then(response => response.json())
      .then(json => this.setState({ series: json, isFetching: false}));
   }
+
+  // componentDidMount() {
+  //   fetch('http://api.tvmaze.com/search/shows?q=Gary-Owen')
+  //    .then(response => response.json())
+  //    .then(json => this.setState({ series: json, isFetching: false}));
+  // }
+
   render() {
     const {series, seriesName, isFetching} = this.state;
     return (
@@ -28,7 +32,8 @@ class Series extends Component {
        <div>
          <input 
           value={seriesName}
-          type="text" onChange={this.onSeriesInputChange}/>
+          type="text" 
+          onChange={this.onSeriesInputChange}/>
        </div>
        { 
          !isFetching && series.length === 0 && seriesName.trim() === ''
@@ -47,7 +52,7 @@ class Series extends Component {
        {
          isFetching && <p> Loading.... </p>
        }
-      <SeriesList List = {this.state.series}/>
+      <SeriesList list = {this.state.series}/>
      </div>
     )
   }
