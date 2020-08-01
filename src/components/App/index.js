@@ -9,14 +9,9 @@ class App extends Component{
     return (
     <div className="App">
       <header className="App-header">
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <h1>
           T.V. Series
-        </a>
+        </h1>
       </header>
       <Main />
     </div>
